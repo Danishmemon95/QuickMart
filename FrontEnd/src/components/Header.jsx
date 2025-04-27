@@ -11,7 +11,7 @@ const Header = () => {
     const { data, isLoading, error } = useGetTopProductsQuery();
 
     if (isLoading) {
-        return <Loader />;
+        return null;
     }
 
     if (error) {

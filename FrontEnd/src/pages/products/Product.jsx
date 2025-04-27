@@ -24,10 +24,7 @@ const Product = ({ product }) => {
                         </span>
                     </h2>
                 </Link>
-<<<<<<< HEAD
-                <div></div>
-=======
->>>>>>> f39d20d7a7bc8bf914bd84985518dd175004b87a
+
             </div>
         </div>
     );
