@@ -22,6 +22,7 @@ const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -74,7 +75,18 @@ const Navigation = () => {
             <AiOutlineShoppingCart className="mr-2" size={26} />
             <span className="hidden nav-item-name ">Cart</span>{" "}
           </div>
+
+          <div className="absolute mt-[-10px] ml-[17px]">
+            {cartItems.length > 0 && (
+              <span>
+                <span className="px-1 py-0 text-sm text-white bg-blue-500 rounded-full">
+                  {cartItems.reduce((a, c) => a + c.qty, 0)}
+                </span>
+              </span>
+            )}
+          </div>
         </Link>
+
         <Link to="/favorite" className="flex relative mt-[2rem]">
           <div className="flex justify-center items-center transition-transform transform hover:translate-x-2 relative">
             <FaHeart className=" mr-2" size={20} />
@@ -99,7 +111,7 @@ const Navigation = () => {
                 >
                   <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
                     <MdFormatListBulletedAdd className="mr-2" size={28} />
-                    <span className="hidden nav-item-name">Products</span>
+                    <span className="hidden nav-item-name">Add Product</span>
                   </div>
                 </Link>
               </li>

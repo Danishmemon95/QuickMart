@@ -43,7 +43,7 @@ const AllProducts = () => {
                                                 </h5>
 
                                                 <p className="text-gray-400 text-xs">
-                                                        {moment(product.createdAt).format("MMMM Do YYYY")}
+                                                    {moment(product.createdAt).format("MMMM Do YYYY")}
                                                 </p>
                                             </div>
 
@@ -54,7 +54,7 @@ const AllProducts = () => {
                                             <div className="flex justify-between">
                                                 <div
                                                     // to={`/admin/product/update/${product._id}`}
-                                                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+                                                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                                 >
                                                     Update Product
                                                     <svg

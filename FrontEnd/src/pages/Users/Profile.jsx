@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { setCredentials } from "@/Redux/features/auth/authSlice";
 import { useProfileMutation } from "@/Redux/api/userApiSlice";
 import UpdateProfileModal from "./UpdateProfileModal";
+import UserOrder from "./UserOrder";
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -14,11 +15,13 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="container mx-auto p-4 mt-[10rem]">
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-semibold mb-6">My Profile</h2>
-        <p className="mb-2"><strong>Name:</strong> {userInfo.username}</p>
-        <p className="mb-4"><strong>Email:</strong> {userInfo.email}</p>
+    <div className="container mx-auto p-4 mt-[2rem]">
+      <div className="flex flex-col">
+        <div>
+          <h2 className="text-3xl font-semibold mb-6">My Profile</h2>
+          <p className="mb-2"><strong>Name:</strong> {userInfo.username}</p>
+          <p className="mb-4"><strong>Email:</strong> {userInfo.email}</p>
+        </div>
 
         <div className="flex space-x-4">
           <button
@@ -28,12 +31,9 @@ const Profile = () => {
             Update Profile
           </button>
 
-          <Link
-            to="/user-orders"
-            className="bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700"
-          >
-            Order History
-          </Link>
+        </div>
+        <div className="mt-[3rem]">
+          <UserOrder />
         </div>
       </div>
 
