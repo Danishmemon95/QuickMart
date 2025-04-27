@@ -15,10 +15,11 @@ import {
     FaStar,
     FaStore,
 } from "react-icons/fa";
+import { MdKeyboardBackspace } from "react-icons/md";
 import moment from "moment";
 import HeartIcon from "./HeartIcon";
-// import Ratings from "./Ratings";
-// import ProductTabs from "./ProductTabs";
+import Ratings from "./Ratings";
+import ProductTabs from "./ProductTabs";
 // import { addToCart } from "../../Redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
@@ -65,10 +66,10 @@ const ProductDetails = () => {
 
     return (
         <>
-            <div>
+            <div className="font-semibold text-2xl flex items-center hover:underline ml-[10rem] mt-[1rem]">
+                <MdKeyboardBackspace className="mr-5" />
                 <Link
                     to="/"
-                    className="font-semibold hover:underline ml-[10rem]"
                 >
                     Go Back
                 </Link>
@@ -104,54 +105,57 @@ const ProductDetails = () => {
                             <div className="flex items-center justify-between w-[20rem]">
                                 <div className="one">
                                     <h1 className="flex items-center mb-6">
-                                        <FaStore className="mr-2 text-white" /> Brand:{" "}
+                                        <FaStore className="mr-2 " /> Brand:{" "}
                                         {product.brand}
                                     </h1>
                                     <h1 className="flex items-center mb-6 w-[20rem]">
-                                        <FaClock className="mr-2 text-white" /> Added:{" "}
+                                        <FaClock className="mr-2 " /> Added:{" "}
                                         {moment(product.createAt).fromNow()}
                                     </h1>
                                     <h1 className="flex items-center mb-6">
-                                        <FaStar className="mr-2 text-white" /> Reviews:{" "}
+                                        <FaStar className="mr-2 " /> Reviews:{" "}
                                         {product.numReviews}
                                     </h1>
                                 </div>
 
                                 <div className="two">
                                     <h1 className="flex items-center mb-6">
-                                        <FaStar className="mr-2 text-white" /> Ratings: {rating}
+                                        <FaStar className="mr-2 " /> Ratings: {product.rating}
                                     </h1>
-                                    <h1 className="flex items-center mb-6">
-                                        <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
+                                    {/* <h1 className="flex items-center mb-6">
+                                        <FaShoppingCart className="mr-2" /> Quantity:{" "}
                                         {product.quantity}
-                                    </h1>
+                                    </h1> */}
                                     <h1 className="flex items-center mb-6 w-[10rem]">
-                                        <FaBox className="mr-2 text-white" /> In Stock:{" "}
+                                        <FaBox className="mr-2" /> In Stock:{" "}
                                         {product.countInStock}
                                     </h1>
                                 </div>
                             </div>
 
-                            <div className="flex justify-between flex-wrap">
-                                {/* <Ratings
+                            <div className="flex justify-between items-center flex-wrap">
+                                <Ratings
                                     value={product.rating}
                                     text={`${product.numReviews} reviews`}
-                                /> */}
+                                />
 
                                 {product.countInStock > 0 && (
-                                    <div>
-                                        <select
+                                    <div> <span className="font-mediumt- text-lg">Quantity: {" "}</span>
+                                        <input
+                                            type="number"
                                             value={qty}
-                                            onChange={(e) => setQty(e.target.value)}
-                                            className="p-2 w-[6rem] rounded-lg text-black"
-                                        >
-                                            {[...Array(product.countInStock).keys()].map((x) => (
-                                                <option key={x + 1} value={x + 1}>
-                                                    {x + 1}
-                                                </option>
-                                            ))}
-                                        </select>
+                                            onChange={(e) => {
+                                                const value = Number(e.target.value);
+                                                if (value > 0 && value <= product.countInStock) {
+                                                    setQty(value);
+                                                }
+                                            }}
+                                            min="1"
+                                            max={product.countInStock}
+                                            className="p-2 w-[6rem] rounded-lg text-black "
+                                        />
                                     </div>
+
                                 )}
                             </div>
 
@@ -166,8 +170,8 @@ const ProductDetails = () => {
                             </div>
                         </div>
 
-                        <div className="mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
-                            {/* <ProductTabs
+                        <div className="mt-[2rem] container flex flex-col items-start justify-between ml-[1rem]">
+                            <ProductTabs
                                 loadingProductReview={loadingProductReview}
                                 userInfo={userInfo}
                                 submitHandler={submitHandler}
@@ -176,7 +180,7 @@ const ProductDetails = () => {
                                 comment={comment}
                                 setComment={setComment}
                                 product={product}
-                            /> */}
+                            />
                         </div>
                     </div>
                 </>
