@@ -31,7 +31,7 @@ const AdminMenu = () => {
                 <section className="bg-[#151515] p-4 fixed right-7 top-5">
                     <ul className="list-none mt-2">
                         <li>
-                            <NavLink
+                            {/* <NavLink
                                 className="list-item py-2 px-3 mb-5 hover:bg-[#2E2D2D] rounded-sm"
                                 to="/admin/dashboard"
                                 style={({ isActive }) => ({
@@ -39,7 +39,7 @@ const AdminMenu = () => {
                                 })}
                             >
                                 Admin Dashboard
-                            </NavLink>
+                            </NavLink> */}
                         </li>
                         <li>
                             <NavLink

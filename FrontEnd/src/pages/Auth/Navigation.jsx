@@ -97,10 +97,11 @@ const Navigation = () => {
           {userInfo && userInfo.isAdmin && (
             <>
               <li>
-                <Link to="/admin/dashboard" className="flex relative mt-[2rem]">
+                <Link to="/admin/allproductslist" className="flex relative mt-[2rem]">
                   <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
                     <RxDashboard className="mr-2" size={25} />
-                    <span className="hidden nav-item-name">Dashboard</span>
+                    <span className="hidden nav-item-name">                  All Products
+                    </span>
                   </div>
                 </Link>
               </li>
